@@ -161,3 +161,6 @@ cython_debug/
 
 #venv
 .python-version
+
+ah/logs/*
+ah/standalone_admin_password.txt
