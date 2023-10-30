@@ -1,4 +1,4 @@
-export AIRFLOW_HOME="ah"
+export AIRFLOW_HOME="/Users/kirils.cherbach/Documents/GitHub/refactored-garbanzo/ah"
 
 AIRFLOW_VERSION=2.7.2
 
