@@ -16,6 +16,7 @@ CREATE TABLE public.jobs (
     country text,
     filtertext text,
     updated_at timestamp without time zone,
+    full_response JSONB,
     insert_ts timestamp without time zone
 );
 
