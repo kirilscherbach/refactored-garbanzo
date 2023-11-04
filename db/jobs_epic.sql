@@ -1,5 +1,5 @@
-drop table if exists public.jobs;
-CREATE TABLE public.jobs (
+drop table if exists public.jobs_epic;
+CREATE TABLE public.jobs_epic (
     absolute_url text,
     education text,
     internal_job_id text,
@@ -20,4 +20,4 @@ CREATE TABLE public.jobs (
     insert_ts timestamp without time zone
 );
 
-GRANT ALL on public.jobs to scraper
+GRANT ALL on public.jobs_epic to scraper;
