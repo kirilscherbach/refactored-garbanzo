@@ -12,7 +12,7 @@ with DAG(
 ) as dag1:
 
     @task(
-        task_id="epic_jobs_scraper2"
+        task_id="epic_jobs_scraper"
     )
     def epic_jobs_scraping():
         from garbanzo_scripts.webscrapers.epic_jobs import run_epic_jobs_scraper
@@ -20,5 +20,16 @@ with DAG(
         run_epic_jobs_scraper()
         #func_func()
         return "Epic Jobs have been scraped successfully"
+    
+    @task(
+        task_id="crytek_jobs_scraper"
+    )
+    def сrytek_jobs_scraping():
+        from garbanzo_scripts.webscrapers.crytek_jobs import run_сrytek_jobs_scraper
+        #from garbanzo_scripts.webscrapers.test import func_func
+        run_сrytek_jobs_scraper()
+        #func_func()
+        return "Crytek Jobs have been scraped successfully"
 
     task1 = epic_jobs_scraping()
+    task2 = сrytek_jobs_scraping()
