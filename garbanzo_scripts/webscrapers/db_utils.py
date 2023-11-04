@@ -1,9 +1,11 @@
-import psycopg2
+import logging
 import os
 from contextlib import contextmanager
-import logging
+
+import psycopg2
 
 logger = logging.getLogger(__name__)
+
 
 @contextmanager
 def db_cursor():
@@ -11,7 +13,9 @@ def db_cursor():
     db_name = "scraper_db"
     db_user = "scraper"
     db_password = os.environ.get("KS_PG_PASSWORD")
-    conn = psycopg2.connect(f"dbname={db_name} user={db_user} host={db_host} password='{db_password}'")
+    conn = psycopg2.connect(
+        f"dbname={db_name} user={db_user} host={db_host} password='{db_password}'"
+    )
     cur = conn.cursor()
     try:
         yield cur
@@ -21,4 +25,3 @@ def db_cursor():
         logger.info("Closing cursor and connection")
         cur.close()
         conn.close()
-
