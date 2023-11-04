@@ -35,11 +35,11 @@ def run_epic_jobs_scraper():
                 , "state": rd_position.get("state", "N/A")
                 , "country": rd_position.get("country", "N/A")
                 , "filterText": rd_position.get("filterText", "N/A")
-                , "updated_at": rd_position.get("updated_at", "N/A")
+                , "updated_at": rd_position.get("updated_at", "2000-01-01 00:00:00")
                 , "full_response": r_position.text
                 }
                 query = """
-                INSERT INTO jobs (
+                INSERT INTO jobs_epic (
                             absolute_url
                             , education
                             , internal_job_id
