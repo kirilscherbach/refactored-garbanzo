@@ -12,7 +12,7 @@ def db_cursor():
     db_host = "localhost"
     db_name = "scraper_db"
     db_user = "scraper"
-    db_password = os.environ.get("KS_PG_PASSWORD")
+    db_password = os.environ.get("SCRAPER_PG_PASSWORD")
     conn = psycopg2.connect(
         f"dbname={db_name} user={db_user} host={db_host} password='{db_password}'"
     )
