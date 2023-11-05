@@ -1,5 +1,6 @@
 drop table if exists public.jobs_crytek;
 CREATE TABLE public.jobs_crytek (
+    id SERIAL PRIMARY KEY,
     job_id text,
     additional_plain text,
     created_at timestamp without time zone,

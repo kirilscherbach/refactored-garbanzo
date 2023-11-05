@@ -1,5 +1,6 @@
 drop table if exists public.jobs_epic;
 CREATE TABLE public.jobs_epic (
+    id SERIAL PRIMARY KEY,
     absolute_url text,
     education text,
     internal_job_id text,
