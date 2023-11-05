@@ -170,3 +170,6 @@ ah/airflow.db
 
 # dbt
 garbanzo_dbt/.user.yml
+
+# vscode
+.vscode/*
