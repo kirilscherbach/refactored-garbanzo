@@ -20,3 +20,4 @@ CREATE TABLE public.jobs_crytek (
 );
 
 GRANT ALL on public.jobs_crytek to scraper;
+GRANT ALL on public.jobs_crytek to dbt_user;

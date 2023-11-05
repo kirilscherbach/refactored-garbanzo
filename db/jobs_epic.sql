@@ -22,3 +22,4 @@ CREATE TABLE public.jobs_epic (
 );
 
 GRANT ALL on public.jobs_epic to scraper;
+GRANT ALL on public.jobs_epic to dbt_user;
