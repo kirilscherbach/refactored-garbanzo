@@ -159,10 +159,14 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-#venv
+# venv
 .python-version
 
+# airflow
 ah/logs/*
 ah/standalone_admin_password.txt
 ah/airflow-webserver.pid
 ah/airflow.db
+
+# dbt
+garbanzo_dbt/.user.yml
