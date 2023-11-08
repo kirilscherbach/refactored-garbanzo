@@ -21,3 +21,4 @@ CREATE TABLE public.jobs_crytek (
 
 GRANT ALL on public.jobs_crytek to scraper;
 GRANT ALL on public.jobs_crytek to dbt_user;
+GRANT ALL ON SEQUENCE jobs_crytek_new_id_seq TO scraper;
