@@ -21,6 +21,11 @@ CREATE TABLE public.jobs_epic (
     insert_ts timestamp without time zone
 );
 
+CREATE INDEX insert_ts_btree_epic ON jobs_epic USING btree
+(
+    insert_ts
+);
+
 GRANT ALL on public.jobs_epic to scraper;
 GRANT ALL on public.jobs_epic to dbt_user;
 GRANT ALL ON SEQUENCE jobs_epic_new_id_seq TO scraper;

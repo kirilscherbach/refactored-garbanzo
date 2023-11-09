@@ -19,6 +19,11 @@ CREATE TABLE public.jobs_crytek (
     insert_ts timestamp without time zone
 );
 
+CREATE INDEX insert_ts_btree_crytek ON jobs_crytek USING btree
+(
+    insert_ts
+);
+
 GRANT ALL on public.jobs_crytek to scraper;
 GRANT ALL on public.jobs_crytek to dbt_user;
 GRANT ALL ON SEQUENCE jobs_crytek_new_id_seq TO scraper;
