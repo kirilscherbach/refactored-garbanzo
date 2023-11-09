@@ -1,43 +1,32 @@
 {{
   config(
     materialized='incremental',
-    unique_key='clean_job_id',
-    description='This table contains a single open position registered as open per day and can be used for further analysis',
-    alias='jobs_crytek_daily',
+    unique_key='daily_job_id',
+    description='This table contains a single open position from Epic registered as open per day and can be used for further analysis',
+    alias='jobs_epic_daily',
     indexes=[
-      {'columns': ['clean_job_id'], 'type': 'btree', 'unique': True},
-      {'columns': ['insert_date'], 'type': 'btree'},
+      {'columns': ['job_id', 'insert_date'], 'type': 'btree', 'unique': True},
+      {'columns': ['insert_ts'], 'type': 'btree'},
     ]
   )
 }}
 
-with base as (
-  select * from {{ source('scraper_results', 'jobs_crytek') }}
-)
-
 select
-    clean_job_id
+      daily_job_id
     , absolute_url
-    , education
-    , internal_job_id
-    , requisition_id
+    , internal_job_id||requisition_id as job_id
     , title
     , department
     , company
     , remote
-    , spotlight
-    , type
-    , city
-    , state
-    , country
+    , city ||', '|| state ||', '|| country as job_location
     , updated_at
     , insert_ts
     , insert_date
 from
     (select
-        concat(internal_job_id, '-', requisition_id, '-', insert_ts::date) as clean_job_id
+          concat(internal_job_id, '-', requisition_id, '-', insert_ts::date) as daily_job_id
         , absolute_url
-        , education
         , internal_job_id
         , requisition_id
         , title
@@ -45,7 +34,6 @@ from
         , company
         , remote
         , spotlight
-        , type
         , city
         , state
         , country
