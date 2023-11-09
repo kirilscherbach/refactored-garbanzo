@@ -3,6 +3,7 @@ from __future__ import annotations
 import pendulum
 from airflow import DAG
 from airflow.decorators import task
+from airflow.operators.bash import BashOperator
 
 with DAG(
     dag_id="01-ks-sandbox",
@@ -30,5 +31,14 @@ with DAG(
         # func_func()
         return "Crytek Jobs have been scraped successfully"
 
+    dbt_vars = """'CURRENT_DATE': '{{ ds }}'"""
+    bash_task = BashOperator(
+        task_id="dbt_model",
+        cwd="/Users/kirils.cherbach/Documents/GitHub/refactored-garbanzo/garbanzo_dbt",
+        bash_command=f"""dbt run --vars '{{{dbt_vars}}}'""",
+    )
     task1 = epic_jobs_scraping()
     task2 = сrytek_jobs_scraping()
+
+    task1 >> bash_task
+    task2 >> bash_task
