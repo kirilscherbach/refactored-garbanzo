@@ -57,9 +57,9 @@ def run_epic_jobs_scraper():
                             , company
                             , remote
                             , spotlight
-                            , type
+                            , _type
                             , city
-                            , state
+                            , _state
                             , country
                             , filterText
                             , updated_at
